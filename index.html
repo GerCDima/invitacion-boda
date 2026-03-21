@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación | Nuestra Boda</title>
+  <meta name="description" content="Invitación de casamiento" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="row">
+      <div class="brand" id="brandText">Invitación</div>
+      <nav class="links">
+        <a href="#agenda">Agenda</a>
+        <a href="#puntos">Puntos</a>
+        <a href="#regalos">Regalos</a>
+        <a href="#rsvp">RSVP</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO + COUNTDOWN + FOTO GRANDE -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="heroCard">
+        <div class="heroInner">
+
+          <!-- FOTO GRANDE -->
+          <div class="heroPhoto">
+            <img id="heroImg" alt="Foto principal" />
+          </div>
+
+          <!-- TEXTO + BOTONES + COUNTDOWN -->
+          <div class="heroRight">
+            <div class="kicker" id="kicker">Gran fiesta gran</div>
+            <h1 id="heroTitle">—</h1>
+            <p class="sub" id="heroSub">—</p>
+
+            <div class="heroBtns">
+              <a class="btn primary" id="btnCalendar" href="#" target="_blank" rel="noopener">Agendar fecha</a>
+              <button class="btn" id="btnOpenRsvp" type="button">Confirmar asistencia</button>
+            </div>
+
+            <div class="countdownBox" id="agenda">
+              <div class="countTitle">Agendá la fecha</div>
+              <div class="muted" id="fechaBonita">—</div>
+              <div class="sp10"></div>
+              <div class="timer">
+                <div class="t"><div class="n" id="d">0</div><div class="l">Días</div></div>
+                <div class="t"><div class="n" id="h">0</div><div class="l">Hs</div></div>
+                <div class="t"><div class="n" id="m">0</div><div class="l">Min</div></div>
+                <div class="t"><div class="n" id="s">0</div><div class="l">Seg</div></div>
+              </div>
+            </div>
+
+            <p class="small tip">Deslizá para ver toda la info ↓</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDA (CIVIL / CEREMONIA / FESTEJO) -->
+  <section>
+    <div class="wrap">
+      <h2 class="sectionTitle">Agenda</h2>
+      <p class="muted">Acá están los momentos clave del evento que nos encantaría que nos acompañes.</p>
+      <div class="grid3" id="eventGrid"></div>
+    </div>
+  </section>
+
+  <!-- PUNTOS DE INTERÉS -->
+  <section id="puntos">
+    <div class="wrap">
+      <h2 class="sectionTitle">Accesibilidad por la zona</h2>
+      <p class="muted">Si venís con tutú, acá van algunos estacionamientos.</p>
+
+      <div class="card poiCard">
+        <div class="cardWatermark">
+          <img id="poiIcon" alt="Icono puntos de interés" />
+        </div>
+        <ul id="poiList" class="poiList"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGALOS (con foto) -->
+  <section id="regalos">
+    <div class="wrap">
+      <h2 class="sectionTitle">Regalos</h2>
+
+      <div class="card giftCard">
+        <div class="giftPhoto">
+          <img id="giftImg" alt="Foto regalos" />
+        </div>
+
+        <div class="giftBody">
+          <p class="muted" id="regalosTexto">—</p>
+
+          <hr class="sep">
+
+          <h3 class="h3">Cuenta bancaria</h3>
+          <div class="muted" id="cuentaInfo">—</div>
+
+          <div class="heroBtns giftBtns">
+            <button class="btn" id="btnCopyCbu" type="button">Copiar CBU</button>
+          </div>
+
+          <p class="small" id="copyStatus"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp">
+    <div class="wrap">
+      <h2 class="sectionTitle">Confirmación de asistencia</h2>
+      <div class="card">
+        <p class="muted" id="rsvpText">—</p>
+        <p class="small" id="adultsNote">—</p>
+        <div class="heroBtns">
+          <button class="btn primary" id="btnOpenRsvp2" type="button">Confirmar asistencia</button>
+        </div>
+        <p class="small">El formulario se abre dentro de la página.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>Hecho con ♥ — invitación simple de una sola página.</div>
+  </div>
+</footer>
+
+<!-- Modal RSVP -->
+<dialog id="rsvpModal">
+  <div class="modalHead">
+    <div class="modalTitle">RSVP</div>
+    <button class="x" id="btnCloseRsvp" type="button">✕</button>
+  </div>
+
+  <div class="modalBody">
+    <p class="muted modalP">
+      Por favor completá los campos. Te pedimos confirmar antes del <span id="rsvpDeadline">—</span>.
+    </p>
+
+    <form id="rsvpForm" method="POST">
+      <label>Nombre y apellido</label>
+      <input name="nombre" required placeholder="Tu nombre" />
+
+      <label>¿Asistís?</label>
+      <select name="asistencia" required>
+        <option value="" selected disabled>Elegí una opción</option>
+        <option>Asistiré</option>
+        <option>No asistiré</option>
+      </select>
+
+      <label>Menú especial</label>
+      <select name="menu">
+        <option>Ninguno</option>
+        <option>Celíaco</option>
+        <option>Vegetariano</option>
+        <option>Vegano</option>
+        <option>Diabético</option>
+      </select>
+
+      <label>Comentarios</label>
+      <textarea name="comentarios" placeholder="Ej: voy con X, llego tarde, etc."></textarea>
+
+      <input type="hidden" name="_subject" value="RSVP - Invitación" />
+      <input type="hidden" name="_template" value="table" />
+
+      <div class="modalActions">
+        <button class="btn primary" type="submit">Enviar RSVP</button>
+        <button class="btn" type="button" id="btnCancelRsvp">Cancelar</button>
+      </div>
+
+      <p class="small" id="rsvpStatus"></p>
+    </form>
+  </div>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
